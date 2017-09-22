@@ -57,6 +57,32 @@ namespace LanguageFeatures.Controllers
                 (object)String.Format("Total: {0:c}", cartTotal));
         }
 
+        public ViewResult UseExtensionEnumerable()
+        {
+            IEnumerable<Product> products = new ShoppingCart
+            {
+                Products = new List<Product> {
+                    new Product {Name = "Kayak", Price = 275M},
+                    new Product {Name = "Lifejacket", Price = 48.95M},
+                    new Product {Name = "Soccer ball", Price = 19.50M},
+                    new Product {Name = "Corner flag", Price = 34.95M}
+                }
+            };
+            // create and populate an array of Product objects
+            Product[] productArray = {
+                new Product {Name = "Kayak", Price = 275M},
+                new Product {Name = "Lifejacket", Price = 48.95M},
+                new Product {Name = "Soccer ball", Price = 19.50M},
+                new Product {Name = "Corner flag", Price = 34.95M}
+            };
+            // get the total value of the products in the cart
+            decimal cartTotal = products.TotalPrice();
+            decimal arrayTotal = products.TotalPrice();
+            return View("Result",
+                (object)String.Format("Cart Total: {0}, Array Total: {1}",
+                    cartTotal, arrayTotal));
+        }
+
 
 
     }
