@@ -26,18 +26,19 @@ namespace LanguageFeatures.Controllers
 
         }
 
-        public ActionResult About()
+        public ViewResult CreateCollection()
         {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
+            string[] stringArray = {"Apple", "orange", "plum"};
+            List<int> intList = new List<int> {10, 20, 30, 40};
+            Dictionary<string, int> myDict = new Dictionary<string, int>
+            {
+                {"apple", 10},
+                {"orange", 20 },
+                {"plum", 30 }
+            };
+            return View("Result", (object) stringArray[1]);
         }
 
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
-        }
+      
     }
 }
