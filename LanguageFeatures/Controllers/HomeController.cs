@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Web;
 using System.Web.Mvc;
 using LanguageFeatures.Models;
@@ -101,6 +102,23 @@ namespace LanguageFeatures.Controllers
                 total += prod.Price;
             }
             return View("Result", (object)String.Format("Total: {0}", total));
+        }
+
+        public ViewResult CreateAnonArray()
+        {
+            var OddsAndAnds = new[]
+            {
+                new Product {Name = "MVC", Category = "Pattern"},
+                new Product {Name = "Hat", Category = "Clothing"},
+                new Product {Name = "Apple", Category = "Fruit"}
+            };
+            StringBuilder result = new StringBuilder();
+            foreach (var item in OddsAndAnds)
+            {
+                result.Append(item.Name).Append("");
+            }
+
+            return View("Result", (object) result.ToString());
         }
 
 
