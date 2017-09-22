@@ -89,16 +89,14 @@ namespace LanguageFeatures.Controllers
             {
                 Products = new List<Product> {
                     new Product {Name = "Kayak", Category = "Watersports", Price = 275M},
-                    new Product {Name = "Lifejacket", Category = "Watersports",
-                        Price = 48.95M},
-                    new Product {Name = "Soccer ball", Category = "Soccer",
-                        Price = 19.50M},
-                    new Product {Name = "Corner flag", Category = "Soccer",
-                        Price = 34.95M}
+                    new Product {Name = "Lifejacket", Category = "Watersports", Price = 48.95M},
+                    new Product {Name = "Soccer ball", Category = "Soccer", Price = 19.50M},
+                    new Product {Name = "Corner flag", Category = "Soccer", Price = 34.95M}
                 }
             };
             decimal total = 0;
-            foreach (Product prod in products.FilterByCategory("Soccer"))
+            foreach (Product prod in products
+                .Filter(prod => prod.Category == "Soccer" || prod.Price > 20))
             {
                 total += prod.Price;
             }
